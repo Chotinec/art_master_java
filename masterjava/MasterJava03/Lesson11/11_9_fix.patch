@@ -1,0 +1,25 @@
+Index: persist/src/main/java/ru/javaops/masterjava/persist/dao/UserDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- persist/src/main/java/ru/javaops/masterjava/persist/dao/UserDao.java	(revision 3c103ae7ee68bdd2106478d02819086c4cd0df0e)
++++ persist/src/main/java/ru/javaops/masterjava/persist/dao/UserDao.java	(date 1517173425965)
+@@ -18,7 +18,7 @@
+             int id = insertGeneratedId(user);
+             user.setId(id);
+         } else {
+-            insertWitId(user);
++            insertWithId(user);
+         }
+         return user;
+     }
+@@ -38,7 +38,7 @@
+     abstract int insertGeneratedId(@BindBean User user);
+ 
+     @SqlUpdate("INSERT INTO users (id, full_name, email, flag, city_ref) VALUES (:id, :fullName, :email, CAST(:flag AS USER_FLAG), :cityRef) ")
+-    abstract void insertWitId(@BindBean User user);
++    abstract void insertWithId(@BindBean User user);
+ 
+     @SqlQuery("SELECT * FROM users ORDER BY full_name, email LIMIT :it")
+     public abstract List<User> getWithLimit(@Bind int limit);
